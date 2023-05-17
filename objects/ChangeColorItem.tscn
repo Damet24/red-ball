@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6ba5huup8lgq"]
+
+[ext_resource type="Script" path="res://scripts/ChangeColorItem/ChangeColorItem.cs" id="1_u71to"]
+[ext_resource type="Texture2D" uid="uid://cl5fmosu0s3sq" path="res://assets/sprites/items.png" id="2_cmuaq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7d4k"]
+atlas = ExtResource("2_cmuaq")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v0ehq"]
+size = Vector2(8, 16)
+
+[node name="ChangeColorItem" type="Area2D"]
+script = ExtResource("1_u71to")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_s7d4k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_v0ehq")

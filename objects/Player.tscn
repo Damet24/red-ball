@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://e62tvhd2u2qs"]
+
+[ext_resource type="Texture2D" uid="uid://cmygxdnfkrtmj" path="res://assets/sprites/player.png" id="1_gpibb"]
+[ext_resource type="Script" path="res://scripts/player/Player.cs" id="2_lbll6"]
+[ext_resource type="Script" path="res://scripts/player/PlayerSprite.cs" id="3_lolsp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yvytl"]
+radius = 8.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("2_lbll6")
+MaxVelocityX = 190.0
+GroundAcc = 20.0
+GroundFric = 30.0
+AirAcc = 5.0
+AirFric = 2.0
+GravityAcc = 8.0
+GravityForce = 700.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_gpibb")
+script = ExtResource("3_lolsp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_yvytl")
