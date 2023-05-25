@@ -23,3 +23,8 @@ script = ExtResource("3_lolsp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_yvytl")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 26.0
+text = "uwu"

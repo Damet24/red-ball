@@ -3,10 +3,8 @@ using System;
 
 public partial class Player : CharacterBody2D
 {
-    [Signal]
-    public delegate void ColorStateChangedEventHandler(string color);
-
-    public string ColorState = ColorStates.RED;
+    private PlayerEventBus playerEventBus;
+    public Color color = Colors.Red;
 
     [Export]
     public float MaxVelocityX = 200;
@@ -29,14 +27,22 @@ public partial class Player : CharacterBody2D
     private float TempAcc = 0;
     private float TempFric = 0;
     Vector2 MovementVelocity = new Vector2();
-    private int DoubleJump = 1;
+    private int DoubleJumpIndex = 1;
     private int MaxDoubleJump = 1;
+    [Export]
+    public int Lives = 3;
+
+    public override void _Ready()
+    {
+        playerEventBus = GetNode<PlayerEventBus>("/root/PlayerEventBus");
+    }
 
     public override void _Process(double delta)
     {
+        GetNode<Label>("Label").Text = "" + Lives;
         if (IsOnFloor())
         {
-            if (DoubleJump <= 0) ResetDoubleJump();
+            if (DoubleJumpIndex <= 0) ResetDoubleJump();
             TempAcc = GroundAcc;
             TempFric = GroundFric;
             MovementVelocity.Y = 0;
@@ -67,10 +73,9 @@ public partial class Player : CharacterBody2D
         {
             if (IsOnFloor()) Jump();
 
-            if (DoubleJump > 0 && !IsOnFloor())
+            if (DoubleJumpIndex > 0 && !IsOnFloor())
             {
-                Jump();
-                DoubleJump--;
+                DoubleJump();
             }
         }
 
@@ -86,13 +91,30 @@ public partial class Player : CharacterBody2D
         MovementVelocity.Y = -JumpForce;
     }
 
+    private void DoubleJump()
+    {
+        MovementVelocity.Y = -JumpForce * 0.7f;
+        DoubleJumpIndex--;
+    }
+
     private void ResetDoubleJump()
     {
-        DoubleJump = MaxDoubleJump;
+        DoubleJumpIndex = MaxDoubleJump;
     }
 
     private void ApplyGravity()
     {
         MovementVelocity.Y = Calculate.GetDelta(Velocity.Y, GravityForce, GravityAcc);
+    }
+
+    public void ChangeColor(Color newColor)
+    {
+        playerEventBus.EmitChangeColor(newColor);
+    }
+
+    public void DamegController()
+    {
+        Lives--;
+        playerEventBus.EmitIsDeath(Lives);
     }
 }

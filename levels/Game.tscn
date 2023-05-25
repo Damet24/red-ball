@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://1obxr1yix3jw"]
+
+[ext_resource type="PackedScene" uid="uid://bgt5vkuisc5be" path="res://levels/LevelLayout.tscn" id="1_aude5"]
+[ext_resource type="PackedScene" uid="uid://ory17nf6fkxs" path="res://interface/gui/UserInfo.tscn" id="2_trk4r"]
+[ext_resource type="PackedScene" uid="uid://ddd8ecfhkx87h" path="res://interface/menu/MainMenu.tscn" id="3_y7gsd"]
+
+[node name="Game" type="Node2D"]
+
+[node name="LevelLayout" parent="." instance=ExtResource("1_aude5")]
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="UserInfo" parent="GUI" instance=ExtResource("2_trk4r")]
+
+[node name="MainMenu" parent="GUI" instance=ExtResource("3_y7gsd")]
+visible = false

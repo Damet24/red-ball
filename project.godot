@@ -11,14 +11,15 @@ config_version=5
 [application]
 
 config/name="RedBall"
-run/main_scene="res://levels/tests/test_1.tscn"
+run/main_scene="res://levels/Game.tscn"
 config/features=PackedStringArray("4.0", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Calculate="*res://scripts/globals/utils/Calculate.cs"
-ColorStates="*res://scripts/globals/States/Player/ColorStates.cs"
+PlayerEventBus="*res://scripts/globals/EventBus/PlayerEventBus.cs"
+LevelControl="*res://scripts/level/LevelControl.cs"
 
 [display]
 

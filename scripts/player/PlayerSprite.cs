@@ -9,12 +9,12 @@ public partial class PlayerSprite : Sprite2D
 	public override void _Ready()
 	{
 		player = GetParent<Player>();
-		player.ColorStateChanged += OnChangeColorState;
-		Modulate = Color.FromHtml(player.ColorState);
+		Modulate = player.color;
+		GetNode<PlayerEventBus>("/root/PlayerEventBus").ColorStateChanged += OnChangeColorState;
 	}
 
-	private void OnChangeColorState(string color)
+	private void OnChangeColorState(Color _Color)
 	{
-		Modulate = Color.FromHtml(color);
+		Modulate = _Color;
 	}
 }

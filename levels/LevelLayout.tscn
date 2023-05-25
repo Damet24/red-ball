@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgt5vkuisc5be"]
+
+[ext_resource type="Script" path="res://scripts/level/LevelLayout.cs" id="1_31oq5"]
+
+[node name="LevelLayout" type="Node2D"]
+script = ExtResource("1_31oq5")
