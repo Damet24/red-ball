@@ -15,10 +15,15 @@ run/main_scene="res://levels/Game.tscn"
 config/features=PackedStringArray("4.0", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout=""
+
 [autoload]
 
 GameControl="*res://scripts/globals/control/GameControl.cs"
 LevelControl="*res://scripts/level/LevelControl.cs"
+GameEventBus="*res://scripts/globals/EventBus/GameEventBus.cs"
 GuiEventBus="*res://scripts/globals/EventBus/GuiEventBus/GuiEventBus.cs"
 PlayerEventBus="*res://scripts/globals/EventBus/PlayerEventBus.cs"
 Calculate="*res://scripts/globals/utils/Calculate.cs"

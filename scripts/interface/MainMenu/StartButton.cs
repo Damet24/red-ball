@@ -5,6 +5,6 @@ public partial class StartButton : Button
 {
     public override void _Ready()
     {
-        Pressed += () => GetNode<GuiEventBus>("/root/GuiEventBus").EmitChangeMenu(Guis.MainMenu);
+        Pressed += () => GetNode<GameEventBus>("/root/GameEventBus").EmitStartGame(Levels.LevelTest);
     }
 }

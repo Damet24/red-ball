@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://1obxr1yix3jw"]
+[gd_scene load_steps=10 format=3 uid="uid://1obxr1yix3jw"]
 
 [ext_resource type="PackedScene" uid="uid://bgt5vkuisc5be" path="res://levels/LevelLayout.tscn" id="1_aude5"]
 [ext_resource type="Script" path="res://scripts/globals/Game.cs" id="1_dhblt"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://d0ruilldgiqr3" path="res://interface/menu/DeathMenu.tscn" id="4_qxko2"]
 [ext_resource type="AudioStream" uid="uid://d2sidxh0wtty5" path="res://assets/sounds/music1.mp3" id="5_bklv3"]
 [ext_resource type="PackedScene" uid="uid://doxuvyslhjmhx" path="res://interface/menu/OptionsMenu/OptionsMenu.tscn" id="6_2grg0"]
+[ext_resource type="PackedScene" uid="uid://f1fg2syg5jth" path="res://interface/menu/InGameMainMenu.tscn" id="8_10man"]
 
 [node name="Game" type="Node2D"]
 process_mode = 3
@@ -27,6 +28,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_mc55f")
 
+[node name="Background" type="ColorRect" parent="GUI/Container"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.443137)
+
 [node name="UserInfo" parent="GUI/Container" instance=ExtResource("2_trk4r")]
 visible = false
 
@@ -42,13 +53,16 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
+[node name="InGameMainMenu" parent="GUI/Container" instance=ExtResource("8_10man")]
+visible = false
+layout_mode = 1
+
 [node name="sounds" type="Node" parent="."]
 
 [node name="Music" type="Node" parent="sounds"]
 
 [node name="Menu" type="AudioStreamPlayer2D" parent="sounds/Music"]
 stream = ExtResource("5_bklv3")
-autoplay = true
 bus = &"music"
 
 [node name="sfx" type="Node" parent="sounds"]

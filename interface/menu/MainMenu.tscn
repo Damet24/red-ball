@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://ddd8ecfhkx87h"]
 
 [ext_resource type="Script" path="res://scripts/interface/MainMenu/StartButton.cs" id="1_br5iq"]
-[ext_resource type="Script" path="res://scripts/interface/MainMenu/ExitButton.cs" id="1_xp2dw"]
 [ext_resource type="Script" path="res://scripts/interface/MainMenu/OptionsButton.cs" id="2_ebqh2"]
+[ext_resource type="PackedScene" uid="uid://botnp0e8r1uuf" path="res://interface/ExitButton.tscn" id="3_bgonx"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -40,8 +40,5 @@ text = "Options
 "
 script = ExtResource("2_ebqh2")
 
-[node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="ExitButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_bgonx")]
 layout_mode = 2
-text = "Exit
-"
-script = ExtResource("1_xp2dw")

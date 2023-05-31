@@ -10,17 +10,31 @@ public partial class GuiControl : Control
     public override void _Ready()
     {
         _GuiEventBus = GetNode<GuiEventBus>("/root/GuiEventBus");
-        _GuiEventBus.ChangeMenu += OnChangeGui;
         _GuiEventBus.BackGui += Back;
+        _GuiEventBus.HideAll += OnHideAll;
+        _GuiEventBus.ChangeMenu += OnChangeGui;
+        GD.Print(_GuiEventBus.GetSignalList());
         ChangeGui(Guis.MainMenu);
     }
 
-    public void HideAllGui()
+    public void SetBackground(bool index)
+    {
+        var Background = GetNode<Control>("Background");
+        Background.Visible = index;
+    }
+
+    public void HideAllGui(bool background)
     {
         foreach (Control item in GetChildren())
         {
-            item.Visible = false;
+            if (item.Name != "Background") item.Visible = false;
+            else if (background) item.Visible = false;
         }
+    }
+
+    private void OnHideAll(bool background)
+    {
+        HideAllGui(background);
     }
 
     public void Back()
@@ -28,12 +42,14 @@ public partial class GuiControl : Control
         ChangeGui(PreviousGui);
     }
 
-    public void OnChangeGui(string GuiName)
+    public void OnChangeGui(string GuiName, bool WihtBackground)
     {
+        GD.Print("?? X2");
+        SetBackground(WihtBackground);
         ChangeGui(GuiName);
     }
 
-    public void ToggleUserGui ()
+    public void ToggleUserGui()
     {
         var userInfo = GetNode<Control>(Guis.UserInfo);
         userInfo.Visible = !userInfo.Visible;
@@ -44,7 +60,7 @@ public partial class GuiControl : Control
         var Gui = GetNode<Control>(GuiName);
         if (Gui != null)
         {
-            HideAllGui();
+            HideAllGui(false);
             PreviousGui = CurrentGui;
             CurrentGui = GuiName;
             Gui.Visible = true;

@@ -29,8 +29,15 @@ public partial class LevelLayout : Node2D
 		levelControl.EmitLevelReadySignal();
 	}
 
+	private void OnChangeLevel (string LevelName)
+	{
+		CurrentLevelName = LevelName;
+		ChangeLevel();
+	}
+
 	public override void _Ready()
 	{
 		levelControl = GetNode<LevelControl>("/root/LevelControl");
+		levelControl.ChangeLevel += OnChangeLevel;
 	}
 }
