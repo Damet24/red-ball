@@ -1,16 +1,54 @@
-[gd_scene load_steps=4 format=3 uid="uid://1obxr1yix3jw"]
+[gd_scene load_steps=9 format=3 uid="uid://1obxr1yix3jw"]
 
 [ext_resource type="PackedScene" uid="uid://bgt5vkuisc5be" path="res://levels/LevelLayout.tscn" id="1_aude5"]
+[ext_resource type="Script" path="res://scripts/globals/Game.cs" id="1_dhblt"]
+[ext_resource type="Script" path="res://scripts/interface/GuiControl.cs" id="2_mc55f"]
 [ext_resource type="PackedScene" uid="uid://ory17nf6fkxs" path="res://interface/gui/UserInfo.tscn" id="2_trk4r"]
 [ext_resource type="PackedScene" uid="uid://ddd8ecfhkx87h" path="res://interface/menu/MainMenu.tscn" id="3_y7gsd"]
+[ext_resource type="PackedScene" uid="uid://d0ruilldgiqr3" path="res://interface/menu/DeathMenu.tscn" id="4_qxko2"]
+[ext_resource type="AudioStream" uid="uid://d2sidxh0wtty5" path="res://assets/sounds/music1.mp3" id="5_bklv3"]
+[ext_resource type="PackedScene" uid="uid://doxuvyslhjmhx" path="res://interface/menu/OptionsMenu/OptionsMenu.tscn" id="6_2grg0"]
 
 [node name="Game" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_dhblt")
 
 [node name="LevelLayout" parent="." instance=ExtResource("1_aude5")]
+process_mode = 1
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
-[node name="UserInfo" parent="GUI" instance=ExtResource("2_trk4r")]
+[node name="Container" type="Control" parent="GUI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_mc55f")
 
-[node name="MainMenu" parent="GUI" instance=ExtResource("3_y7gsd")]
+[node name="UserInfo" parent="GUI/Container" instance=ExtResource("2_trk4r")]
 visible = false
+
+[node name="MainMenu" parent="GUI/Container" instance=ExtResource("3_y7gsd")]
+visible = false
+layout_mode = 1
+
+[node name="DeathMenu" parent="GUI/Container" instance=ExtResource("4_qxko2")]
+visible = false
+layout_mode = 1
+
+[node name="OptionsMenu" parent="GUI/Container" instance=ExtResource("6_2grg0")]
+visible = false
+layout_mode = 1
+
+[node name="sounds" type="Node" parent="."]
+
+[node name="Music" type="Node" parent="sounds"]
+
+[node name="Menu" type="AudioStreamPlayer2D" parent="sounds/Music"]
+stream = ExtResource("5_bklv3")
+autoplay = true
+bus = &"music"
+
+[node name="sfx" type="Node" parent="sounds"]

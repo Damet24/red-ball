@@ -1,0 +1,39 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://bmiaugdevoo6e"]
+
+[ext_resource type="FontFile" uid="uid://4jjoovbsrvbu" path="res://assets/fonts/04b_30/04B_30__.TTF" id="1_4cj20"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4tifo"]
+bg_color = Color(0.8, 0.521569, 0.423529, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7amef"]
+bg_color = Color(0.8, 0.521569, 0.423529, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[resource]
+default_font = ExtResource("1_4cj20")
+Button/constants/h_separation = 8
+Button/styles/hover = SubResource("StyleBoxFlat_4tifo")
+Button/styles/normal = SubResource("StyleBoxFlat_7amef")
+MarginContainer/constants/margin_bottom = 16
+MarginContainer/constants/margin_left = 16
+MarginContainer/constants/margin_right = 16
+MarginContainer/constants/margin_top = 16
+VBoxContainer/constants/separation = 8

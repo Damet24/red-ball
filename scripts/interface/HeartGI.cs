@@ -10,7 +10,9 @@ public partial class HeartGI : HBoxContainer
     public override void _Ready()
     {
         var playerEventBus = GetNode<PlayerEventBus>("/root/PlayerEventBus");
+        GD.Print("is death connected");
         playerEventBus.IsDeath += OnDeath;
+        GD.Print("set lives connected");
         playerEventBus.SetLives += OnSetLives;
 		UpdateLivesHud(PlayerLives);
     }

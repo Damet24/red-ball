@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5nt4aihnp51p"]
+
+[ext_resource type="Script" path="res://scripts/spike/Spike.cs" id="1_72qvo"]
+[ext_resource type="Texture2D" uid="uid://chvsq6v0wl6e" path="res://assets/tiles/damage_items.png" id="2_0ihao"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lf8h8"]
+atlas = ExtResource("2_0ihao")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lwiwg"]
+size = Vector2(15, 6)
+
+[node name="Spike" type="Area2D"]
+script = ExtResource("1_72qvo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_lf8h8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 5)
+shape = SubResource("RectangleShape2D_lwiwg")

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://oaymygl14c6s"]
+
+[ext_resource type="Script" path="res://scripts/interface/BackButton.cs" id="1_rvotk"]
+
+[node name="BackButton" type="Button"]
+text = "Back
+"
+script = ExtResource("1_rvotk")

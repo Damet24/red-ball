@@ -17,9 +17,11 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Calculate="*res://scripts/globals/utils/Calculate.cs"
-PlayerEventBus="*res://scripts/globals/EventBus/PlayerEventBus.cs"
+GameControl="*res://scripts/globals/control/GameControl.cs"
 LevelControl="*res://scripts/level/LevelControl.cs"
+GuiEventBus="*res://scripts/globals/EventBus/GuiEventBus/GuiEventBus.cs"
+PlayerEventBus="*res://scripts/globals/EventBus/PlayerEventBus.cs"
+Calculate="*res://scripts/globals/utils/Calculate.cs"
 
 [display]
 

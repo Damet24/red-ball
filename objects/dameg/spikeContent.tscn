@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1kcnwp1dqs1r"]
+
+[ext_resource type="Script" path="res://scripts/spike/SpikeContent.cs" id="1_ke6xi"]
+
+[node name="SpikeContent" type="Node2D"]
+script = ExtResource("1_ke6xi")

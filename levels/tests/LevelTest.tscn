@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://irwtmlmv7d2q"]
+[gd_scene load_steps=7 format=3 uid="uid://irwtmlmv7d2q"]
 
 [ext_resource type="TileSet" uid="uid://cs7bxs13q151b" path="res://src/tiles/main_test1.tres" id="1_ppfuh"]
 [ext_resource type="PackedScene" uid="uid://c6ba5huup8lgq" path="res://objects/ChangeColorItem.tscn" id="2_xuepj"]
 [ext_resource type="PackedScene" uid="uid://e62tvhd2u2qs" path="res://objects/Player.tscn" id="3_ypqaw"]
-[ext_resource type="PackedScene" uid="uid://c5nt4aihnp51p" path="res://objects/dameg/Damage.tscn" id="4_uh2dc"]
+[ext_resource type="PackedScene" uid="uid://c5nt4aihnp51p" path="res://objects/dameg/Spike.tscn" id="4_uh2dc"]
+[ext_resource type="PackedScene" uid="uid://b1kcnwp1dqs1r" path="res://objects/dameg/spikeContent.tscn" id="5_6mlgv"]
 [ext_resource type="PackedScene" uid="uid://c06oc6n0w45fd" path="res://objects/control/Checkpoint.tscn" id="5_6vumm"]
 
 [node name="LevelTest" type="Node2D"]
@@ -33,11 +34,19 @@ ColorIndex = 0
 [node name="Player" parent="content" instance=ExtResource("3_ypqaw")]
 position = Vector2(336, 104)
 
-[node name="Damage2" parent="content" instance=ExtResource("4_uh2dc")]
-position = Vector2(264, 312)
-
-[node name="Damage4" parent="content" instance=ExtResource("4_uh2dc")]
-position = Vector2(296, 312)
-
 [node name="Checkpoint" parent="content" instance=ExtResource("5_6vumm")]
 position = Vector2(128, 128)
+
+[node name="SpikeContent" parent="content" instance=ExtResource("5_6mlgv")]
+
+[node name="Spike" parent="content/SpikeContent" instance=ExtResource("4_uh2dc")]
+position = Vector2(296, 312)
+
+[node name="Spike2" parent="content/SpikeContent" instance=ExtResource("4_uh2dc")]
+position = Vector2(264, 312)
+
+[node name="Spike4" parent="content/SpikeContent" instance=ExtResource("4_uh2dc")]
+position = Vector2(280, 312)
+
+[node name="Spike3" parent="content/SpikeContent" instance=ExtResource("4_uh2dc")]
+position = Vector2(248, 312)
