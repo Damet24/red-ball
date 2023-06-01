@@ -15,6 +15,7 @@ public partial class Game : Node2D
         _GameEventBus = GetNode<GameEventBus>("/root/GameEventBus");
         _GameEventBus.StartGame += OnStartGame;
         _GameEventBus.ResumeGame += ResumeGame;
+        _GameEventBus.StopGame += OnStopGame;
         _LevelControl = GetNode<LevelControl>("/root/LevelControl");
         _GuiEventBus = GetNode<GuiEventBus>("/root/GuiEventBus");
     }
@@ -52,9 +53,19 @@ public partial class Game : Node2D
         _GuiEventBus.EmitChangeMenu(Guis.InGameMainMenu, true);
     }
 
+    public void OnStopGame()
+    {
+        InGame = false;
+        IsPaused = false;
+        _LevelControl.EmitDeleteLevel();
+        _GuiEventBus.EmitChangeMenu(Guis.MainMenu);
+    }
+
     private void OnStartGame(string LevelName)
     {
         InGame = true;
+        IsPaused = false;
+        GetTree().Paused = false;
         _GuiEventBus.EmitHideAll();
         _GuiEventBus.EmitChangeMenu(Guis.UserInfo);
         _LevelControl.EmitChangeLevelSignal(LevelName);

@@ -13,6 +13,11 @@ public partial class LevelLayout : Node2D
 
 	private void RemoveCurrentLevel()
 	{
+		foreach (var node in GetChildren())
+		{
+			RemoveChild(node);
+			node.QueueFree();
+		}
 		if (GetChildCount() > 0)
 		{
 			RemoveChild(GetNode<Node>(CurrentLevelName));
@@ -35,9 +40,15 @@ public partial class LevelLayout : Node2D
 		ChangeLevel();
 	}
 
+	public void DeleteLevel()
+	{
+		RemoveCurrentLevel();
+	}
+
 	public override void _Ready()
 	{
 		levelControl = GetNode<LevelControl>("/root/LevelControl");
 		levelControl.ChangeLevel += OnChangeLevel;
+		levelControl.DeleteLevel += DeleteLevel;
 	}
 }

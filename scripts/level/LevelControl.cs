@@ -9,6 +9,8 @@ public partial class LevelControl : Node
     public delegate void LevelReadyEventHandler();
 	[Signal]
 	public delegate void ChangeLevelEventHandler(string level);
+	[Signal]
+	public delegate void DeleteLevelEventHandler();
 
 	public void EmitChangeLevelSignal (string level)
 	{
@@ -19,5 +21,10 @@ public partial class LevelControl : Node
 	public void EmitLevelReadySignal()
 	{
 		EmitSignal("LevelReady");
+	}
+
+	public void EmitDeleteLevel()
+	{
+		EmitSignal("DeleteLevel");
 	}
 }

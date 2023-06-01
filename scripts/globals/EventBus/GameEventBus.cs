@@ -7,6 +7,8 @@ public partial class GameEventBus : Node
     public delegate void StartGameEventHandler(string LevelName);
     [Signal]
     public delegate void ResumeGameEventHandler();
+    [Signal]
+    public delegate void StopGameEventHandler();
 
     public void EmitStartGame(string LevelName)
     {
@@ -16,5 +18,10 @@ public partial class GameEventBus : Node
     public void EmitResumeGame()
     {
         EmitSignal("ResumeGame");
+    }
+
+    public void EmitStopGame ()
+    {
+        EmitSignal("StopGame");
     }
 }

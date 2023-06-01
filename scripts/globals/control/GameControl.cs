@@ -14,10 +14,8 @@ public partial class GameControl : Node
         Error error = _ConfigFile.Load("user://config.cfg");
         if (error != Error.Ok)
         {
-			GD.Print("Error loading config");
             return;
         }
 
-		GD.Print(_ConfigFile.GetSections());
     }
 }

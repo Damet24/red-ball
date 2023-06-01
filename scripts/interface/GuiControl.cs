@@ -13,7 +13,6 @@ public partial class GuiControl : Control
         _GuiEventBus.BackGui += Back;
         _GuiEventBus.HideAll += OnHideAll;
         _GuiEventBus.ChangeMenu += OnChangeGui;
-        GD.Print(_GuiEventBus.GetSignalList());
         ChangeGui(Guis.MainMenu);
     }
 
@@ -44,7 +43,6 @@ public partial class GuiControl : Control
 
     public void OnChangeGui(string GuiName, bool WihtBackground)
     {
-        GD.Print("?? X2");
         SetBackground(WihtBackground);
         ChangeGui(GuiName);
     }

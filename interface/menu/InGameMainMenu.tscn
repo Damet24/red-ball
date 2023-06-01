@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://f1fg2syg5jth"]
+[gd_scene load_steps=5 format=3 uid="uid://f1fg2syg5jth"]
 
 [ext_resource type="PackedScene" uid="uid://botnp0e8r1uuf" path="res://interface/ExitButton.tscn" id="1_lixr5"]
 [ext_resource type="Script" path="res://scripts/interface/InGameMainMenu/ResumeButton.cs" id="1_xeckx"]
 [ext_resource type="Script" path="res://scripts/interface/InGameMainMenu/InGameOptionsButton.cs" id="2_uw14g"]
+[ext_resource type="Script" path="res://scripts/interface/InGameMainMenu/MainMenuButton.cs" id="3_k5qx5"]
 
 [node name="InGameMainMenu" type="Control"]
 layout_mode = 3
@@ -43,6 +44,7 @@ script = ExtResource("2_uw14g")
 layout_mode = 2
 text = "Main Menu
 "
+script = ExtResource("3_k5qx5")
 
 [node name="ExitButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_lixr5")]
 layout_mode = 2

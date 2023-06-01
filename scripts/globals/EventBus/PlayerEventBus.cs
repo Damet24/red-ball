@@ -22,7 +22,6 @@ public partial class PlayerEventBus : Node
 
     public void EmitSetLives (int Lives)
     {
-        GD.Print("Emit set lives signal");
         EmitSignal("SetLives", Lives);
     }
 }
